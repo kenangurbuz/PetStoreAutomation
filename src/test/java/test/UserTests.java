@@ -2,7 +2,6 @@ package test;
 
 import com.github.javafaker.Faker;
 import endpoints.UserEndPoints;
-import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
