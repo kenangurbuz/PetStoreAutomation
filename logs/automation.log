@@ -48,3 +48,27 @@
 13:30:31.363 [main] DEBUG test.UserTests - ***debugging***
 13:30:31.457 [main] INFO  test.UserTests - ********* create user **********
 13:30:45.299 [main] INFO  test.UserTests - ******** user is created *******
+13:57:25.308 [main] DEBUG test.UserTests - ***debugging***
+13:57:25.365 [main] INFO  test.UserTests - ********* create user **********
+13:57:31.930 [main] INFO  test.UserTests - ******** user is created *******
+14:01:01.773 [main] DEBUG test.UserTests - ***debugging***
+14:01:01.829 [main] INFO  test.UserTests - ********* create user **********
+14:01:08.275 [main] INFO  test.UserTests - ******** user is created *******
+14:01:11.655 [main] DEBUG test.UserTestsProperties - ***debugging***
+14:01:11.658 [main] INFO  test.UserTestsProperties - ********* create user **********
+14:01:12.425 [main] INFO  test.UserTestsProperties - ******** user is created *******
+14:02:27.819 [main] DEBUG test.UserTests - ***debugging***
+14:02:27.857 [main] INFO  test.UserTests - ********* create user **********
+14:02:32.469 [main] INFO  test.UserTests - ******** user is created *******
+14:02:35.713 [main] DEBUG test.UserTestsProperties - ***debugging***
+14:02:35.716 [main] INFO  test.UserTestsProperties - ********* create user **********
+14:02:36.452 [main] INFO  test.UserTestsProperties - ******** user is created *******
+14:05:10.763 [main] DEBUG test.UserTests - ***debugging***
+14:05:10.827 [main] INFO  test.UserTests - ********* create user **********
+14:05:19.413 [main] INFO  test.UserTests - ******** user is created *******
+14:05:22.793 [main] DEBUG test.UserTestsProperties - ***debugging***
+14:05:22.797 [main] INFO  test.UserTestsProperties - ********* create user **********
+14:05:23.631 [main] INFO  test.UserTestsProperties - ******** user is created *******
+14:07:11.889 [main] DEBUG test.UserTests - ***debugging***
+14:07:11.924 [main] INFO  test.UserTests - ********* create user **********
+14:07:16.334 [main] INFO  test.UserTests - ******** user is created *******

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="All Test Suite">
+<suite name="Regression Tests">
 
     <test verbose="2" preserve-order="true" name="C:/Users/User/IdeaProjects/RestAssuredAutomationFrameWork/src/test/java/test">
         <classes>
-            <class name="test.UserTests">
+            <class name="test.UserTestsProperties">
                 <methods>
                     <include name="testCreateUser"/>
                     <include name="testReadUser"/>
