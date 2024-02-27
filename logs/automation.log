@@ -42,3 +42,9 @@
 13:18:55.690 [main] DEBUG test.UserTests - ***debugging***
 13:18:55.731 [main] INFO  test.UserTests - ********* create user **********
 13:19:00.529 [main] INFO  test.UserTests - ******** user is created *******
+13:27:20.626 [main] DEBUG test.UserTests - ***debugging***
+13:27:20.712 [main] INFO  test.UserTests - ********* create user **********
+13:27:28.714 [main] INFO  test.UserTests - ******** user is created *******
+13:30:31.363 [main] DEBUG test.UserTests - ***debugging***
+13:30:31.457 [main] INFO  test.UserTests - ********* create user **********
+13:30:45.299 [main] INFO  test.UserTests - ******** user is created *******
