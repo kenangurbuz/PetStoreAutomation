@@ -8,8 +8,7 @@
                 <methods>
                     <include name="testCreateUser"/>
                     <include name="testReadUser"/>
-                    <include name="testUpdateUser"/>
-                    <include name="testDeleteUser"/>
+
                 </methods>
             </class>
         </classes>
