@@ -26,7 +26,6 @@
                     <configuration>
                         <suiteXmlFiles>
                             <suiteXmlFile>smokeTests.xml</suiteXmlFile>
-                            
                         </suiteXmlFiles>
 
                     </configuration>
