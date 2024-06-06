@@ -27,7 +27,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: test-results
-        path: target/surefire-reports/testng-results.xml
+        path: target/surefire-reports/emailable-report.html
         
     - name: Send test report email
       uses: dawidd6/action-send-mail@v3
@@ -37,17 +37,8 @@ jobs:
         username: ${{ secrets.EMAIL_ADDRESS }}
         password: ${{ secrets.EMAIL_PASSWORD }}
         subject: Test Report
-        body: |
-          <html>
-            <body>
-              <p>Test results attached.</p>
-            </body>
-          </html>
+        body: Test results attached.
         to: kg@daxap.io
         from: Pet Store Api Test
-        attachments: |
-          <html>
-            <body>
-              <a href="artifact://test-results/target/surefire-reports/testng-results.xml">Test Report</a>
-            </body>
-          </html>
+        attachments: target/surefire-reports/emailable-report.html
+
