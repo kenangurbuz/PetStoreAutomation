@@ -27,7 +27,7 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: test-results
-        path: target/surefire-reports/index.html
+        path: target/surefire-reports/emailable-report.html
         
     - name: Send test report email
       uses: dawidd6/action-send-mail@v3
@@ -40,5 +40,5 @@ jobs:
         body: Test results attached.
         to: kg@daxap.io
         from: Pet Store Api Test
-        attachments: target/surefire-reports/index.html
+        attachments: target/surefire-reports/emailable-report.html
 
