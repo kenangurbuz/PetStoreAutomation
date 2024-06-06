@@ -1,59 +1,50 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
 name: Pet Store Smoke Tests
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+      - master
   pull_request:
-    branches: [ "master" ]
+    branches:
+      - master
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up JDK 21
-        uses: actions/setup-java@v4
-        with:
-          java-version: '21'
-          distribution: 'temurin'
-          cache: maven
-      - name: Build with Maven
-        run: mvn clean test
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Send mail
-        if: always()
-        uses: dawidd6/action-send-mail@v3
-        with:
-          # Required mail server address:
-          server_address: smtp.gmail.com
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+    
+    - name: Build with Maven
+      run: mvn clean install
 
-          # Required mail server port:
-          server_port: 465
+    - name: Run Tests
+      run: mvn test
 
-          # Optional (recommended): mail server username:
-          username: kenan.gurbuz1610@gmail.com
+    - name: Archive test reports
+      if: always()
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-reports
+        path: target/surefire-reports/*.html
 
-          # Optional (recommended) mail server password:
-          password: ${{ secrets.EMAIL_PASSWORD }}
-
-          # Required mail subject:
-          subject: ${{ job.status }} - API TEST
-
-          # Required recipients' addresses:
-          to: kg@daxap.io
-
-          # Required sender full name (address can be skipped):
-          from: PET STORE API TEST
-
-          # Optional attachments:
-          attachments: attachments.zip,git.diff,**/*.html
+    - name: Send test report via email
+      if: always()
+      uses: dawidd6/action-send-mail@v3
+      with:
+        server_address: smtp.gmail.com
+        server_port: 465
+        username: ${{ secrets.EMAIL_USERNAME }}
+        password: ${{ secrets.EMAIL_PASSWORD }}
+        subject: Test Report
+        body: The test report is attached.
+        to: kg@daxap.io
+        from: PET STORE API TEST
+        content_type: text/html
+        attachments: target/surefire-reports/*.html
