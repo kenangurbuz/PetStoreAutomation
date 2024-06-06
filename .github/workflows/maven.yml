@@ -1,4 +1,12 @@
-name: PET STORE SMOKE TESTS
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Pet Store Smoke Tests
 
 on:
   push:
@@ -19,25 +27,5 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
-      - name: Run tests
-        run: mvn test
-        continue-on-error: true
-
-      - name: Archive test results
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-results
-          path: target/surefire-reports/emailable-report.html
-
-      - name: Send test report email
-        uses: dawidd6/action-send-mail@v3
-        with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{ secrets.EMAIL_ADDRESS }}
-          password: ${{ secrets.EMAIL_PASSWORD }}
-          subject: Test Report
-          body: Test results attached.
-          to: kg@daxap.io
-          from: Pet Store Api Test
-          attachments: target/surefire-reports/emailable-report.html
+      - name: Build with Maven
+        run: mvn clean test
