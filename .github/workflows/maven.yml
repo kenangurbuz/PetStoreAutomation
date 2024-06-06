@@ -1,4 +1,4 @@
-name: pailot api test
+name: Pet Store Api Test
 
 on:
   workflow_dispatch:
