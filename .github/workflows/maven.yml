@@ -33,12 +33,6 @@ jobs:
           # Required mail server port:
           server_port: 465
 
-          # Optional (recommended): mail server username:
-          username: kenan.gurbuz1610@gmail.com
-
-          # Optional (recommended) mail server password:
-          password: ${{ secrets.EMAIL_PASSWORD }}
-
           # Required mail subject:
           subject: ${{ job.status }} - API TEST
 
