@@ -47,7 +47,7 @@ public class UserTests {
         response.then().log().all();
         // response.then().statusCode(200);  other way
 
-        Assert.assertEquals(response.getStatusCode(),200);
+        Assert.assertEquals(response.getStatusCode(),20);
 
         logger.info("******** user is created *******");
 
@@ -89,7 +89,7 @@ public class UserTests {
         Response response=UserEndPoints.deleteUser(userPayload.getUsername());
         response.then().log().all();
 
-        Assert.assertEquals(response.getStatusCode(),20);
+        Assert.assertEquals(response.getStatusCode(),200);
 
     }
 
