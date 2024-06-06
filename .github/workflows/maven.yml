@@ -1,18 +1,10 @@
-# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
-
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Pet Store Smoke Tests
+name: pailot api test
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+  workflow_dispatch:
+
+  schedule:
+    - cron: '00 6 * * 1-5'
 
 jobs:
   build:
@@ -20,17 +12,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Set up JDK 21
-      uses: actions/setup-java@v4
-      with:
-        java-version: '21'
-        distribution: 'temurin'
-        cache: maven
-    - name: Build with Maven
-      run: mvn clean test 
-
-    - name: Send mail
+      - uses: actions/checkout@v4
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+      - name: Build with Maven
+        run: mvn clean test "-Dcucumber.filter.tags=@apiDaily and not @ignore"
+        
+        
+      - name: Send mail
         if: always()
         uses: dawidd6/action-send-mail@v3
         with:
@@ -40,11 +33,17 @@ jobs:
           # Required mail server port:
           server_port: 465
 
+          # Optional (recommended): mail server username:
+          username:  ${{ secrets.EMAIL_ADDRESS }}
+
+          # Optional (recommended) mail server password:
+          password: ${{ secrets.EMAIL_PASSWORD }}
+
           # Required mail subject:
           subject: ${{ job.status }} - API TEST
 
           # Required recipients' addresses:
-          to:kg@daxap.io
+          to: kenan.gurbuz1610@gmail.com
 
           # Required sender full name (address can be skipped):
           from: PET STORE API TEST
