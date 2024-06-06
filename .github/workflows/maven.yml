@@ -34,7 +34,7 @@ jobs:
           server_port: 465
 
           # Optional (recommended): mail server username:
-          username:  ${{ secrets.EMAIL_ADDRESS }}
+          username: kenan.gurbuz1610@gmail.com
 
           # Optional (recommended) mail server password:
           password: ${{ secrets.EMAIL_PASSWORD }}
@@ -43,7 +43,7 @@ jobs:
           subject: ${{ job.status }} - API TEST
 
           # Required recipients' addresses:
-          to: kenan.gurbuz1610@gmail.com
+          to: kg@daxap.io
 
           # Required sender full name (address can be skipped):
           from: PET STORE API TEST
