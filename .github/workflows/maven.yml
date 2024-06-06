@@ -1,4 +1,12 @@
-name: Pet Store Api Test
+# This workflow will build a Java project with Maven, and cache/restore any dependencies to improve the workflow execution time
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-java-with-maven
+
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: Pet Store Smoke Tests
 
 on:
   push:
@@ -19,35 +27,5 @@ jobs:
           java-version: '21'
           distribution: 'temurin'
           cache: maven
-      - name: Build with Maven
-        run: mvn clean test | tee test-results.txt
-
-
-      - name: Send mail
-        if: always()
-        uses: dawidd6/action-send-mail@v3
-        with:
-          # Required mail server address:
-          server_address: smtp.gmail.com
-
-          # Required mail server port:
-          server_port: 465
-
-          # Optional (recommended): mail server username:
-          username: kenan.gurbuz1610@gmail.com
-
-          # Optional (recommended) mail server password:
-          password: ${{ secrets.EMAIL_PASSWORD }}
-
-          # Required mail subject:
-          subject: ${{ job.status }} - API TEST
-
-          # Required recipients' addresses:
-          to: kg@daxap.io
-
-          # Required sender full name (address can be skipped):
-          from: PET STORE API TEST
-
-          # Optional attachments:
-          attachments: attachments.zip,git.diff,**/*.html
-
+      - name: Smoke Tests
+        run: mvn clean test
