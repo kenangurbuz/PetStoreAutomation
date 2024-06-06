@@ -27,6 +27,30 @@ jobs:
         java-version: '21'
         distribution: 'temurin'
         cache: maven
-    - name: Smoke Tests
-      run: mvn clean test
+    - name: Build with Maven
+      run: mvn clean test 
+
+    - name: Send mail
+        if: always()
+        uses: dawidd6/action-send-mail@v3
+        with:
+          # Required mail server address:
+          server_address: smtp.gmail.com
+
+          # Required mail server port:
+          server_port: 465
+
+          # Required mail subject:
+          subject: ${{ job.status }} - API TEST
+
+          # Required recipients' addresses:
+          to:kg@daxap.io
+
+          # Required sender full name (address can be skipped):
+          from: PET STORE API TEST
+
+          # Optional attachments:
+          attachments: attachments.zip,git.diff,**/*.html
+    
+   
 
